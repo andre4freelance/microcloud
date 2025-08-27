@@ -1,6 +1,6 @@
 # Microcloud Single Node Installation on Ubuntu 24.04.3 LTS
 
-This documentation describes the installation of Microcloud on a single node running Ubuntu 24.04.3 LTS.
+This documentation describes how to install Microcloud on a single node running Ubuntu 24.04.3 LTS.
 
 ---
 
@@ -12,6 +12,7 @@ Update your package list and upgrade existing packages:
 sudo apt update
 sudo apt upgrade -y
 ```
+
 ---
 
 ## 2. Check Snap and LXD Installation
@@ -31,12 +32,13 @@ If LXD is not installed, install it using Snap:
 ```bash
 sudo snap install lxd
 ```
+
 ---
 
 ## 3. Install Microcloud and MicroOVN
 
-Since this is a single node setup, you only need to install Microcloud and MicroOVN (Ceph is not required):
-
+For a single node setup, install Microcloud and MicroOVN (Ceph is not required):
+Since this is you only need to
 ```bash
 sudo snap install microcloud microovn
 ```
@@ -58,3 +60,70 @@ sudo microcloud init
 ---
 
 You have now completed the single node Microcloud installation!
+
+---
+
+# VLAN Network Configuration
+
+This section describes how to configure a VLAN network and attach it to your Microcloud instance.
+
+
+![Topology](images/topology.png)
+
+## 1. Create VLAN Network (vlan100) Using YAML Configuration
+
+Create a new VLAN network by preparing a YAML configuration file as follows:
+
+```yaml
+name: vlan100-eth0
+type: physical
+config:
+    vlan: '100'
+    parent: 'ens19'
+```
+
+Make sure to set the `parent` to the interface connected to your MikroTik router.
+
+![Create Network](images/create-network-vlan100.png)
+
+---
+
+## 2. Network Overview
+
+After creating the network, you will see two new interfaces: `vlan100-eth0` and `ens19.100`.
+
+![Network Overview](images/network-overview-1.png)
+
+---
+
+## 3. Attach VLAN Interface to Instance
+
+Attach the `vlan100-eth0` network to your instance (for example, "vm-test").
+
+![Network Overview](images/network-overview-1.png)
+
+---
+
+## 4. Interface Overview
+
+Once the interface is attached, you can view the VLAN interface topology.
+
+![Network Overview](images/network-overview-2.png)
+
+---
+
+## 5. Test Instance Connectivity
+
+After attaching the interface, check your instance's IP address and test connectivity using ping from the terminal.
+
+![Network Overview](images/vm-overview.png)
+
+---
+
+## 6. Verify Instance Receives IP from MikroTik
+
+Open Winbox and ping your VM's IP address. If the ping is successful, your VM has received an IP from the MikroTik router.
+
+![Network Overview](images/ping-from-mikrotik-to-vm.png)
+
+---
