@@ -82,7 +82,7 @@ config:
     parent: 'ens19'
 ```
 
-Make sure to set the `parent` to the interface connected to your MikroTik router.
+Make sure to set the `parent` to the interface connected to your MikroTik router. Ensure that the VLAN is configured on the MikroTik device.
 
 ![Create Network](images/create-network-vlan100.png)
 
