@@ -100,7 +100,7 @@ After creating the network, you will see two new interfaces: `vlan100-eth0` and 
 
 Attach the `vlan100-eth0` network to your instance (for example, "vm-test").
 
-![Network Overview](images/network-overview-1.png)
+![Network Overview](images/attach-network.png)
 
 ---
 
