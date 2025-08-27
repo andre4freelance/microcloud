@@ -127,3 +127,15 @@ Open Winbox and ping your VM's IP address. If the ping is successful, your VM ha
 ![Network Overview](images/ping-from-mikrotik-to-vm.png)
 
 ---
+
+## Devices
+
+- **Microcloud**: VM-Proxmox with 4vCPU & 8GB RAM
+- **MikroTik**: VM-Proxmox with 2vCPU & 1GB RAM
+
+---
+
+## Link
+
+Origin : https://github.com/andre4freelance/microcloud/tree/main/singelnode
+Linkedin post : https://www.linkedin.com/posts/link-andre-bastian_infra-cloud-virtualmachine-activity-7366455292886196224-m2Qy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD73JlUBty-p-mBfMEW0-O4j0sv-e_PRQvc
